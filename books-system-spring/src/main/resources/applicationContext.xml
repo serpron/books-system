@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean class="com.entity.Book" id="book"><!--配置一个对象，约定大于配置-->
+        <property name="title" value="Ssm框架实战"/>
+        <property name="author" value="1"/>
+        <property name="chapterList">
+            <list>
+                <ref bean="chapter1"/>
+                <ref bean="chapter2"/>
+            </list>
+        </property>
+    </bean>
+    <bean class="com.entity.Chapter" id="chapter1">
+        <property name="book" ref="book"/>
+        <property name="title" value="第一章"/>
+    </bean>
+    <bean class="com.entity.Chapter" id="chapter2">
+        <property name="book" ref="book"/>
+        <property name="title" value="第二章"/>
+    </bean>
+</beans>

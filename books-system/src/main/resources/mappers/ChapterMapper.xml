@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.ChapterMapper">
+	<resultMap id="BaseChapterMap" type="Chapter">
+		<id property="id" column="id"/>
+		<result property="readCount" column="read_count"/>
+		<result property="replyCount" column="reply_count"/>
+	</resultMap>
+	<resultMap id="ChapterMap" type="Chapter" extends="BaseChapterMap">
+		<association property="book" javaType="Book"
+					 resultMap="com.mapper.BookMapper.BaseBookMap"/>
+	</resultMap>
+	<select id="findWithBook" resultMap="ChapterMap">
+		select c.id,c.title,c.read_count,c.reply_count,c.words,
+		b.id b_id, b.title b_title, b.summary b_summary, b.author b_author
+		from chapter c
+		inner join book b on c.book_id = b.id
+	</select>
+</mapper>

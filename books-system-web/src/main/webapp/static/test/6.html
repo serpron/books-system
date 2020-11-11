@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>开始使用layui</title>
+    <link rel="stylesheet" href="/static/lib/layui-v2.5.5/css/layui.css" media="all">
+</head>
+<body>
+<table class="layui-table"
+       lay-data="{url:'/users',limit:2,page:true,request:{limitName:'rows'}}">
+    <thead>
+        <tr>
+            <th lay-data="{field:'id',sort:true,width:100}">编号</th>
+            <th lay-data="{field:'name',width:200}">姓名</th>
+            <th lay-data="{field:'phone',width:200}">手机</th>
+            <th lay-data="{field:'email',sort:true}">邮箱</th>
+        </tr>
+    </thead>
+</table>
+<script src="/static/lib/layui-v2.5.5/layui.all.js" charset="utf-8"></script>
+</body>
+</html>
