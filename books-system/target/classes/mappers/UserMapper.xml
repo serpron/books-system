@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.UserMapper">
+	<sql id="whereSql">
+		<where>
+			<if test="entity!=null">
+				<if test="entity.name != null and !entity.name.isEmpty()">
+					and name like concat('%',#{entity.name},'%')
+				</if>
+				<if test="entity.phone != null and !entity.phone.isEmpty()">
+					and phone = #{entity.phone}
+				</if>
+				<if test="entity.email != null and !entity.email.isEmpty()">
+					and email = #{entity.email}
+				</if>
+				<if test="entity.id != null">
+					and id = #{entity.id}
+				</if>
+			</if>
+		</where>
+	</sql>
+	<select id="count" resultType="int" >
+		select count(*) from user
+	    <include refid="whereSql"/>
+	</select>
+	<select id="findPage" resultType="User">
+		select * from user
+		<include refid="whereSql"/>
+		order by id
+		<if test="start != null">
+			limit #{start},#{rows}
+		</if>
+	</select>
+	<select id="findById" resultType="User" parameterType="int">
+		select * from user where id = #{id}
+	</select>
+	<select id="findByName" resultType="User">
+		select * from user where name = #{name} and password = #{password}
+	</select>
+</mapper>
