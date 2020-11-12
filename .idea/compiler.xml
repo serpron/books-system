@@ -3,6 +3,19 @@
   <component name="CompilerConfiguration">
     <annotationProcessing>
       <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="books-system" />
+        <module name="books-system-spring" />
+        <module name="books-system-web" />
+      </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="books-system" target="1.7" />
+      <module name="books-system-spring" target="1.7" />
+      <module name="books-system-web" target="1.7" />
+    </bytecodeTargetLevel>
   </component>
 </project>
